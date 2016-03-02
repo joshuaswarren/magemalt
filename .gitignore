@@ -3,3 +3,4 @@
 /output-*/*
 *.box
 *.iso
+/test/.vagrant
