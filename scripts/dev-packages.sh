@@ -18,16 +18,26 @@ apt-add-repository -y ppa:brightbox/ruby-ng
 apt-get update
 apt-get install -y php5
 apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
-apt-get install -y ruby2.2
+apt-get install -y ruby2.2 ruby2.2-dev
 apt-get install -y libgd-tools
 
-apt-get install -y libapache2-mod-php5 
+apt-get install -y ruby-sass ruby-compass
+
+gem install compass
+
+apt-get install -y libapache2-mod-php5 apache2-utils links
+
+a2enmod rewrite
+service apache2 restart
+
+# required for Zray installer to work
+ln -s /var/www /var/www/html
 
 php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
 php -r "if (hash('SHA384', file_get_contents('composer-setup.php')) === 'fd26ce67e3b237fffd5e5544b45b0d92c41a4afe3e3f778e942e43ce6be197b9cdc7c251dcde6e2a52297ea269370680') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); }"
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
-mv /root/composer.phar /usr/local/bin/composer
+mv /home/vagrant/composer.phar /usr/local/bin/composer
 
 apt-get install -y beanstalkd
 apt-get install -y nodejs
@@ -41,7 +51,7 @@ apt-get install -y adminer phpmyadmin
 
 apt-get install -y postgresql-9.3
 
-apt-get install -y sqlite php5-sqlite
+apt-get install -y sqlite php5-sqlite libsqlite3-dev
 
 apt-get install -y php5-redis
 

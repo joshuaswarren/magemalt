@@ -21,7 +21,20 @@ EOT
 cat <<EOT2 >> /home/vagrant/.composer/config.json
 {
     "config": {
-        "cache-files-maxsize": "2048MiB"}
+        "cache-files-maxsize": "2048MiB",
+        "process-timeout": 2000
+     }
 }
 EOT2
+
+mkdir /root/.composer
+
+cat <<EOT3 >> /root/.composer/config.json
+{
+    "config": {
+        "cache-files-maxsize": "2048MiB",
+        "process-timeout": 2000
+    }
+}
+EOT3
 

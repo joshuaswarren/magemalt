@@ -4,3 +4,5 @@
 *.box
 *.iso
 /test/.vagrant
+/test/html
+/test/html/*
