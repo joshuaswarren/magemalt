@@ -16,7 +16,7 @@ apt-get install -y python-software-properties software-properties-common
 add-apt-repository -y ppa:ondrej/php5-5.6
 apt-add-repository -y ppa:brightbox/ruby-ng
 apt-get update
-apt-get install -y php5
+apt-get install -y php5 php5-cli
 apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
 apt-get install -y ruby2.2 ruby2.2-dev
 apt-get install -y libgd-tools
@@ -33,11 +33,12 @@ service apache2 restart
 # required for Zray installer to work
 ln -s /var/www /var/www/html
 
-php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php
-php -r "if (hash('SHA384', file_get_contents('composer-setup.php')) === 'fd26ce67e3b237fffd5e5544b45b0d92c41a4afe3e3f778e942e43ce6be197b9cdc7c251dcde6e2a52297ea269370680') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); }"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
-mv /home/vagrant/composer.phar /usr/local/bin/composer
+wget https://getcomposer.org/installer
+php installer
+rm installer
+mv composer.phar /usr/local/bin/composer
+
+composer config --global process-timeout 2000
 
 apt-get install -y beanstalkd
 apt-get install -y nodejs
@@ -45,7 +46,7 @@ apt-get install -y npm
 apt-get install -y php5-mcrypt
 apt-get install -y php5-curl
 
-apt-get install -y mariadb-server-5.5 libclone-perl libmldbm-perl libnet-daemon-perl libplrpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
+apt-get install -y mariadb-server mariadb-client libclone-perl libmldbm-perl libnet-daemon-perl libplrpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
 
 apt-get install -y adminer phpmyadmin
 
@@ -82,3 +83,8 @@ echo "deb http://packages.blackfire.io/debian any main" | sudo tee /etc/apt/sour
 apt-get update
 
 apt-get install -y blackfire-agent blackfire-php
+
+cd /usr/local/bin
+wget http://files.magerun.net/n98-magerun-latest.phar
+chmod +x ./n98-magerun-latest.phar
+mv n98-magerun-latest.phar magerun
