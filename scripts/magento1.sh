@@ -1,4 +1,12 @@
+mkdir /var/www/public/
 cd /var/www/public/
+
+mkdir cleancopies
+
+git clone https://github.com/OpenMage/magento-mirror magento1
+
+cd ..
+
 mkdir magento
 cd magento
 
