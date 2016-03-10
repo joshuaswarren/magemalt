@@ -12,14 +12,14 @@ wget -q https://github.com/cbednarski/hostess/releases/download/v0.1.0/hostess_l
 chmod +x hostess_linux_amd64
 mv hostess_linux_amd64 /usr/local/bin/hostess
 
-apt-get install -y python-software-properties software-properties-common
+apt-get install -y --force-yes python-software-properties software-properties-common
 add-apt-repository -y ppa:ondrej/php5-5.6
 apt-add-repository -y ppa:brightbox/ruby-ng
 apt-get update
-apt-get install -y php5 php5-cli
-apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
-apt-get install -y ruby2.2 ruby2.2-dev
-apt-get install -y libgd-tools
+apt-get install -y --force-yes php5 php5-cli php5-xsl php5-intl
+apt-get install -y --force-yes git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+apt-get install -y --force-yes ruby2.2 ruby2.2-dev
+apt-get install -y --force-yes libgd-tools
 
 apt-get install -y ruby-sass ruby-compass
 
@@ -46,7 +46,7 @@ apt-get install -y npm
 apt-get install -y php5-mcrypt
 apt-get install -y php5-curl
 
-apt-get install -y mariadb-server mariadb-client libclone-perl libmldbm-perl libnet-daemon-perl libplrpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
+apt-get install -y --force-yes mariadb-server mariadb-client libclone-perl libmldbm-perl libnet-daemon-perl libplrpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
 
 apt-get install -y adminer phpmyadmin
 

@@ -15,9 +15,7 @@ magerun install --dbHost="localhost" --dbUser="dev" --dbPass="dev" --dbName="mag
 #write out current crontab
 crontab -l > mycron
 #echo new cron into cron file
-echo << EOF
-*/1 * * * * /usr/bin/php -c /etc/php5/apache2/php.ini /var/www/public/magento/cron.php > /var/www/public/magento/var/log/magento.cron.log&
-EOF >> mycron
+echo "*/1 * * * * /usr/bin/php -c /etc/php5/apache2/php.ini /var/www/public/magento/cron.php > /var/www/public/magento/var/log/magento.cron.log&" >> mycron
 #install new cron file
 crontab mycron
 rm mycron

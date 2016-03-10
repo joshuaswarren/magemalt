@@ -27,12 +27,11 @@ magento2/bin/magento setup:di:compile
 #write out current crontab
 crontab -l > mycron
 #echo new cron into cron file
-echo << EOF
-
+cat << EOC >> mycron
 */1 * * * * /usr/bin/php -c /etc/php5/apache2/php.ini /var/www/public/magento2/bin/magento cron:run > /var/www/public/magento2/var/log/magento.cron.log&
 */1 * * * * /usr/bin/php -c /etc/php5/apache2/php.ini /var/www/public/magento2/update/cron.php > /var/www/public/magento2/var/log/update.cron.log&
 */1 * * * * /usr/bin/php -c /etc/php5/apache2/php.ini /var/www/public/magento2/bin/magento setup:cron:run > /var/www/public/magento2/var/log/setup.cron.log&
-EOF >> mycron
+EOC 
 #install new cron file
 crontab mycron
 rm mycron
