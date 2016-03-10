@@ -46,6 +46,10 @@ apt-get install -y npm
 apt-get install -y php5-mcrypt
 apt-get install -y php5-curl
 
+apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
+add-apt-repository 'deb http://download.nus.edu.sg/mirror/mariadb/repo/10.0/ubuntu trusty main'
+apt-get update
+
 apt-get install -y --force-yes mariadb-server mariadb-client libclone-perl libmldbm-perl libnet-daemon-perl libplrpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
 
 apt-get install -y adminer phpmyadmin
@@ -88,3 +92,6 @@ cd /usr/local/bin
 wget http://files.magerun.net/n98-magerun-latest.phar
 chmod +x ./n98-magerun-latest.phar
 mv n98-magerun-latest.phar magerun
+
+apt-get update
+apt-get -y upgrade
