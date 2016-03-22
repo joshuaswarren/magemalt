@@ -3,8 +3,8 @@
 
 Vagrant.configure("2") do |config|
 
-    config.vm.box = "creatuity/ubuntu-1404-dev-vbox"
-    config.vm.box_url = "file://../ubuntu-1404-dev-vbox.box" 
+    config.vm.box = "creatuity/ubuntu-1404-dev-vbox-new"
+    config.vm.box_url = "file://../ubuntu-1404-dev-vbox-new.box" 
     config.vm.network "private_network", ip: "192.168.33.10"
     config.vm.provision :shell, path: "bootstrap.sh"
     config.vm.hostname = "scotchbox"

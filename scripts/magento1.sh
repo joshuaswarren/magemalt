@@ -1,5 +1,9 @@
 cd /usr/local/src/
 
+bash < <(wget -q --no-check-certificate -O - https://raw.github.com/colinmollenhour/modman/master/modman-installer)
+cp /home/vagrant/bin/modman /usr/local/bin/modman
+chmod a+rx /usr/local/bin/modman
+
 git clone https://github.com/OpenMage/magento-mirror magento1
 
 cd ..

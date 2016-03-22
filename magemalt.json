@@ -55,7 +55,7 @@
     },
     {
       "name": "vbox",
-      "vm_name": "magemalt-vbox",
+      "vm_name": "magemalt-new-vbox",
       "boot_command": [
         "<esc><esc><enter><wait>",
         "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
