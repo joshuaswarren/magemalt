@@ -16,7 +16,9 @@ cd /opt
 
 magento2/bin/magento setup:install --admin-firstname=Admin --admin-lastname=User --admin-email=test@test.com --admin-user=admin --admin-password=password1 --base-url=http://192.168.33.10/magento2/ --backend-frontname=adminpanel --db-host=localhost --db-name=magento2 --db-user=dev --db-password=dev --currency=USD --language=en_US --timezone=America/Chicago --use-rewrites=1
 
+magento2/bin/magento setup:db-data:upgrade 
 magento2/bin/magento setup:di:compile
+magento2/bin/magento sampledata:deploy
 magento2/bin/magento setup:static-content:deploy
 
 # setup Magento 2 crontab
