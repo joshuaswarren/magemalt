@@ -38,3 +38,11 @@ cat <<EOT3 >> /root/.composer/config.json
 }
 EOT3
 
+cat <<EOT4 >> /etc/apache2/sites-enabled/000-default.conf 
+
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+</Directory>
+EOT4
