@@ -14,9 +14,10 @@ mv hostess_linux_amd64 /usr/local/bin/hostess
 
 apt-get install -y --force-yes python-software-properties software-properties-common
 add-apt-repository -y ppa:ondrej/php5-5.6
-apt-add-repository -y ppa:brightbox/ruby-ng
+add-apt-repository -y ppa:brightbox/ruby-ng
+add-apt-repository -y ppa:ondrej/php
 apt-get update
-apt-get install -y --force-yes php5 php5-cli php5-xsl php5-intl
+apt-get install -y --force-yes php7.0 php7.0-mysql php7.0-fpm php7.0-cli php7.0-xsl php7.0-intl php7.0-mcrypt php7.0-curl php7.0-gd php7.0-mbstring php7.0-zip
 apt-get install -y --force-yes git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
 apt-get install -y --force-yes ruby2.2 ruby2.2-dev
 apt-get install -y --force-yes libgd-tools
@@ -25,7 +26,7 @@ apt-get install -y ruby-sass ruby-compass
 
 gem install compass
 
-apt-get install -y libapache2-mod-php5 apache2-utils links
+apt-get install -y libapache2-mod-php7.0 apache2-utils links
 
 a2enmod rewrite
 service apache2 restart
@@ -62,13 +63,15 @@ apt-get install -y php5-redis
 
 apt-get install -y php5-memcache php5-memcached php5-apcu
 
+apt-get install -y vim grep sed awk sort seq watch curl tree wget
+
 npm update
 
 npm install grunt
 npm install bower
 npm install yeoman
 npm install gulp
-npm install browsersync
+npm install browser-sync
 npm install pm2
 
 npm update
@@ -93,5 +96,33 @@ wget http://files.magerun.net/n98-magerun-latest.phar
 chmod +x ./n98-magerun-latest.phar
 mv n98-magerun-latest.phar magerun
 
+cd /usr/local/bin
+wget http://files.magerun.net/n98-magerun2.phar
+chmod +x ./n98-magerun2.phar	
+mv n98-magerun2.phar magerun2
+
+easy_install behave 
+
+mkdir /opt/selenium
+cd /opt/selenium
+wget http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
+apt-get install openjdk-7-jre-headless -y
+
+apt-get install firefox -y
+apt-get install xvfb -y
+
+
 apt-get update
 apt-get -y upgrade
+
+cat <<EOT4 >> /etc/apache2/sites-enabled/000-default.conf
+
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+</Directory>
+EOT4
+
+
+
