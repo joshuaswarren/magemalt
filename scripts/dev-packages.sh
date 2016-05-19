@@ -22,6 +22,7 @@ apt-get install -y --force-yes git-core curl zlib1g-dev build-essential libssl-d
 apt-get install -y --force-yes ruby2.2 ruby2.2-dev
 apt-get install -y --force-yes libgd-tools
 apt-get install -y --force-yes ant
+apt-get install -y --force-yes php-gettext
 
 apt-get install -y ruby-sass ruby-compass
 
