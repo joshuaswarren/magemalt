@@ -22,7 +22,8 @@ apt-get install -y --force-yes git-core curl zlib1g-dev build-essential libssl-d
 apt-get install -y --force-yes ruby2.2 ruby2.2-dev
 apt-get install -y --force-yes libgd-tools
 apt-get install -y --force-yes ant
-apt-get install -y --force-yes php-gettext
+apt-get install -y --force-yes php-gettext php-intl
+apt-get install -y --force-yes php7-intl
 
 apt-get install -y ruby-sass ruby-compass
 
@@ -31,6 +32,11 @@ gem install compass
 apt-get install -y libapache2-mod-php7.0 apache2-utils links
 
 a2enmod rewrite
+
+a2dismod php5
+apt-get install -y php7.0-cgi
+apt-get install -y php7.0-fpm
+a2enmod php7.0
 service apache2 restart
 
 # required for Zray installer to work
