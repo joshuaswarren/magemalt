@@ -1,4 +1,4 @@
-export DEBIAN_FRONTEND=noninteractive
+export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
 # Install some system packages
 apt-get install -y wget curl vim git mercurial bzr tree python python-pip htop nmap

@@ -1,3 +1,5 @@
+
+
 mkdir /home/vagrant/.composer
 cat <<EOT >> /home/vagrant/.composer/composer.json
 {
@@ -38,3 +40,11 @@ cat <<EOT3 >> /root/.composer/config.json
 }
 EOT3
 
+cat <<EOT4 >> /root/preseed.txt
+locales locales/locales_to_be_generated multiselect     en_US.UTF-8 UTF-8
+locales locales/default_environment_locale      select  en_US.UTF-8
+phpmyadmin	phpmyadmin/reconfigure-webserver	multiselect	apache2
+EOT4
+
+apt-get install -y debconf-utils
+debconf-set-selections /root/preseed.txt
