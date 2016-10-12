@@ -13,7 +13,6 @@ chmod +x hostess_linux_amd64
 mv hostess_linux_amd64 /usr/local/bin/hostess
 
 apt-get install -y --force-yes python-software-properties software-properties-common
-add-apt-repository -y ppa:ondrej/php5-5.6
 add-apt-repository -y ppa:brightbox/ruby-ng
 add-apt-repository -y ppa:ondrej/php
 apt-get update
@@ -52,8 +51,6 @@ composer config --global process-timeout 2000
 apt-get install -y beanstalkd
 apt-get install -y nodejs
 apt-get install -y npm
-apt-get install -y php5-mcrypt
-apt-get install -y php5-curl
 
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
 add-apt-repository 'deb http://download.nus.edu.sg/mirror/mariadb/repo/10.0/ubuntu trusty main'

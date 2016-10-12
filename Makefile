@@ -1,10 +1,10 @@
-all: clean build
+all: clean build-vbox
 
 validate:
 	packer validate magemalt.json
 
 build: validate
-	packer build magemalt.json
+	packer build -only-vbox magemalt.json
 
 build-vbox: validate
 	packer build -only=vbox magemalt.json
