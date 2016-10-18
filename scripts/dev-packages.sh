@@ -62,11 +62,11 @@ apt-get install -y adminer phpmyadmin
 
 apt-get install -y postgresql-9.3
 
-apt-get install -y sqlite php5-sqlite libsqlite3-dev
+apt-get install -y sqlite php7.0-sqlite libsqlite3-dev
 
-apt-get install -y php5-redis
+apt-get install -y php7.0-redis
 
-apt-get install -y php5-memcache php5-memcached php5-apcu
+apt-get install -y php7.0-memcache php7.0-memcached php7.0-apcu
 
 apt-get install -y vim grep sed awk sort seq watch curl tree wget
 
