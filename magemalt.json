@@ -55,7 +55,7 @@
     },
     {
       "name": "vbox",
-      "vm_name": "magemalt-new-vbox",
+      "vm_name": "magemalt-2.0.4-vbox",
       "boot_command": [
         "<esc><esc><enter><wait>",
         "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
@@ -155,7 +155,7 @@
       "type": "vagrant",
       "compression_level": 9,
       "keep_input_artifact": true,
-      "output": "ubuntu-1404-dev-{{.BuildName}}.box"
+      "output": "magemalt-2.0.4-{{.BuildName}}.box"
     }
   ]
 }
