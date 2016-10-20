@@ -59,8 +59,6 @@ add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-netwo
 
 apt-get update
 
-apt-get install -y --force-yes mariadb-server mariadb-client libclone-perl libmldbm-perl libnet-daemon-perl libplrpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
-
 apt-get install -y adminer phpmyadmin
 
 apt-get install -y postgresql-9.3
@@ -87,7 +85,7 @@ npm update
 gem install mailcatcher
 
 composer global update
-composer gloal require magento/magento2ce
+composer global require magento/magento2ce
 
 wget -O zray.tar.gz http://www.zend.com/en/download/3973?start=true
 tar -zxvf zray.tar.gz
@@ -132,5 +130,7 @@ cat <<EOT4 >> /etc/apache2/sites-enabled/000-default.conf
 </Directory>
 EOT4
 
+apt-get install -y libclone-perl libmldbm-perl libnet-daemon-perl libplrpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
+apt-get install -y mariadb-server mariadb-client
 
 
