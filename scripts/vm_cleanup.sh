@@ -1,6 +1,11 @@
 #!/bin/bash
 
+echo "Running updatedb..."
+
 updatedb
+
+echo "Updatedb done, running apt-get update/upgrade..."
+
 apt-get update 
 apt-get upgrade -y
 apt-get autoremove -y
