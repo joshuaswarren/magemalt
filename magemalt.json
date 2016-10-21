@@ -1,6 +1,8 @@
 {
   "variables": {
-    "name": "creatuity/magemalt"
+    "name": "creatuity/magemalt",
+    "version": "2.0.7",
+    "box_name": "{{user `version`}}-{{timestamp}}"
   },
   "push": {
     "name": "{{user `name`}}",
@@ -58,7 +60,7 @@
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "magemalt-2.0.7-vbox",
+      "vm_name": "magemalt-{{user `box_name`}}",
       "vboxmanage": [
         [
           "modifyvm",
@@ -128,7 +130,9 @@
       "type": "vagrant",
       "compression_level": 9,
       "keep_input_artifact": true,
-      "output": "magemalt-2.0.7-{{.BuildName}}.box"
+      "output": "magemalt-{{user `box_name`}}.box"
     }
   ]
 }
+0
+
