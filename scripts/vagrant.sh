@@ -8,6 +8,7 @@ chmod 0440 /etc/sudoers.d/vagrant
 usermod -a -G sudo vagrant
 
 # Installing vagrant keys
+echo "Installing vagrant keys"
 mkdir /home/vagrant/.ssh
 chmod 700 /home/vagrant/.ssh
 cd /home/vagrant/.ssh
@@ -16,5 +17,9 @@ chmod 600 /home/vagrant/.ssh/authorized_keys
 chown -R vagrant /home/vagrant/.ssh
 
 # Install NFS for Vagrant
-apt-get update
+# apt-get update
+apt-get autoclean
+apt-get -f install
+apt-get-f install
+echo "Installing NFS"
 apt-get install -y nfs-common

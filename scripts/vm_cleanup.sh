@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "Running updatedb..."
+# echo "Running updatedb..."
 
-updatedb
+# updatedb
 
-echo "Updatedb done, running apt-get update/upgrade..."
+# echo "Updatedb done, running apt-get update/upgrade..."
 
 apt-get update 
 apt-get upgrade -y
