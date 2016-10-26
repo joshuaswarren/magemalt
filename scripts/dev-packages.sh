@@ -12,6 +12,7 @@ wget -q https://github.com/cbednarski/hostess/releases/download/v0.1.0/hostess_l
 chmod +x hostess_linux_amd64
 mv hostess_linux_amd64 /usr/local/bin/hostess
 
+apt-get install -y redis-server
 apt-get install -y --force-yes python-software-properties software-properties-common
 add-apt-repository -y ppa:brightbox/ruby-ng
 add-apt-repository -y ppa:ondrej/php
@@ -98,9 +99,13 @@ apt-get update
 apt-get install -y blackfire-agent blackfire-php
 
 cd /usr/local/bin
-wget http://files.magerun.net/n98-magerun-latest.phar
-chmod +x ./n98-magerun-latest.phar
-mv n98-magerun-latest.phar magerun
+# wget http://files.magerun.net/n98-magerun-latest.phar
+cd /usr/local/src/
+git clone https://github.com/joshuaswarren/n98-magerun.git
+cd n98-magerun
+chmod a+x build.sh
+./build.sh
+mv bin/n98-magerun /usr/local/bin/magerun
 
 cd /usr/local/bin
 wget http://files.magerun.net/n98-magerun2.phar
