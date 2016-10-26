@@ -87,6 +87,7 @@ gem install mailcatcher
 
 composer global update
 composer global require magento/magento2ce
+composer global require snowdog/frontools
 
 wget -O zray.tar.gz http://www.zend.com/en/download/3973?start=true
 tar -zxvf zray.tar.gz
