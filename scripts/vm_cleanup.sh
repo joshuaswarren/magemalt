@@ -1,15 +1,12 @@
 #!/bin/bash
 
-# echo "Running updatedb..."
-
-# updatedb
-
-# echo "Updatedb done, running apt-get update/upgrade..."
+echo "Running apt-get update"
 
 apt-get update 
+
+echo "Running apt-get upgrade"
+
 apt-get upgrade -y
-apt-get autoremove -y
-apt-get clean
 
 # Removing leftover leases and persistent rules
 echo "cleaning up dhcp leases"
