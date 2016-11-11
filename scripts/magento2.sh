@@ -18,7 +18,7 @@ chmod a+x bin/magento
 
 bin/magento setup:install --admin-firstname=Admin --admin-lastname=User --admin-email=test@test.com --admin-user=admin --admin-password=password1 --base-url=http://192.168.33.10/magento2/ --backend-frontname=adminpanel --db-host=localhost --db-name=magento2 --db-user=dev --db-password=dev --currency=USD --language=en_US --timezone=America/Chicago --use-rewrites=1
 
-chmod -R 777 * 
+# chmod -R 777 * 
 
 bin/magento setup:db-data:upgrade 
 bin/magento setup:upgrade
@@ -29,7 +29,7 @@ bin/magento deploy:mode:set developer
 
 mkdir -p /pub/media/catalog/product/cache/1/
 
-chmod -R 777 *
+# chmod -R 777 *
 
 # setup Magento 2 crontab
 

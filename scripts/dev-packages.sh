@@ -18,7 +18,7 @@ add-apt-repository -y ppa:brightbox/ruby-ng
 add-apt-repository -y ppa:ondrej/php
 apt-get update
 apt-get install -y --force-yes php7.0 php7.0-mysql php7.0-fpm php7.0-cli php7.0-xsl php7.0-intl php7.0-mcrypt php7.0-curl php7.0-gd php7.0-mbstring php7.0-zip php7.0-soap
-apt-get install -y --force-yes git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+apt-get install -y --force-yes git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev php7.0-xml
 apt-get install -y --force-yes ruby2.2 ruby2.2-dev
 apt-get install -y --force-yes libgd-tools
 apt-get install -y --force-yes ant
@@ -99,14 +99,20 @@ apt-get update
 
 apt-get install -y blackfire-agent blackfire-php
 
+apt-get install -y gawk
+
 cd /usr/local/bin
+# cant use latest magerun, have to use develop
+# magerun has not yet released a new release that supports magento 1.9.3
 # wget http://files.magerun.net/n98-magerun-latest.phar
 cd /usr/local/src/
-git clone https://github.com/joshuaswarren/n98-magerun.git
+git clone -b develop https://github.com/netz98/n98-magerun.git 
 cd n98-magerun
-chmod a+x build.sh
+curl -s https://getcomposer.org/installer | php
+php -f ./composer.phar -- install
 ./build.sh
-mv bin/n98-magerun /usr/local/bin/magerun
+chmod a+x n98-magerun.phar
+mv n98-magerun.phar /usr/local/bin/magerun
 
 cd /usr/local/bin
 wget http://files.magerun.net/n98-magerun2.phar
