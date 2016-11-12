@@ -37,6 +37,7 @@ a2dismod php5
 apt-get install -y php7.0-cgi
 apt-get install -y php7.0-fpm
 a2enmod php7.0
+sed -i 's:/var/www/html:/var/www/public:g' /etc/apache2/sites-enabled/000-default.conf
 service apache2 restart
 
 # required for Zray installer to work
