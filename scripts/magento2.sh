@@ -26,6 +26,7 @@ bin/magento setup:di:compile
 bin/magento sampledata:deploy
 bin/magento setup:static-content:deploy
 bin/magento deploy:mode:set developer
+bin/magento setup:upgrade
 
 mkdir -p /pub/media/catalog/product/cache/1/
 
