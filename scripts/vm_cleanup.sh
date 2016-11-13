@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo "Running apt-get update"
+# echo "Running apt-get update"
 
-apt-get update 
+# apt-get update 
 
-echo "Running apt-get upgrade"
+# echo "Running apt-get upgrade"
 
-apt-get upgrade -y
+# apt-get upgrade -y
 
 # Removing leftover leases and persistent rules
 echo "cleaning up dhcp leases"

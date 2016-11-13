@@ -20,6 +20,5 @@ chown -R vagrant /home/vagrant/.ssh
 # apt-get update
 apt-get autoclean
 apt-get -f install
-apt-get-f install
 echo "Installing NFS"
 apt-get install -y nfs-common
