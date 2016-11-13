@@ -57,7 +57,7 @@ apt-get install -y npm
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
 apt-get install software-properties-common
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-networks.net/mariadb/repo/10.1/ubuntu xenial main'
+# add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-networks.net/mariadb/repo/10.1/ubuntu xenial main'
 
 apt-get update
 
@@ -143,7 +143,7 @@ cat <<EOT4 >> /etc/apache2/sites-enabled/000-default.conf
 </Directory>
 EOT4
 
-apt-get install -y libclone-perl libmldbm-perl libnet-daemon-perl libplrpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
-apt-get install -y mariadb-server mariadb-client
+apt-get install -y libclone-perl libmldbm-perl libnet-daemon-perl librpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
+apt-get install -y --allow-unauthenticated mariadb-server mariadb-client
 
 
