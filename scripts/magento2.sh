@@ -3,6 +3,9 @@ cd /usr/local/src/
 git clone https://github.com/magento/magento2
 git clone https://github.com/magento/magento2-sample-data
 
+chown -R vagrant:www-data /opt/magento2
+chown -R vagrant:www-data /opt/magento2-sample-data
+
 cp -r /usr/local/src/magento2 /opt/magento2
 cp -r /usr/local/src/magento2-sample-data /opt/magento2-sample-data
 
@@ -20,6 +23,7 @@ bin/magento setup:install --admin-firstname=Admin --admin-lastname=User --admin-
 
 # chmod -R 777 * 
 
+
 bin/magento setup:db-data:upgrade 
 bin/magento setup:upgrade
 bin/magento setup:di:compile
@@ -30,6 +34,8 @@ bin/magento setup:upgrade
 
 mkdir -p /pub/media/catalog/product/cache/1/
 
+chown -R vagrant:www-data /opt/magento2-sample-data/pub
+chmod -R 777 /opt/magento2-sample-data/pub
 # chmod -R 777 *
 
 # setup Magento 2 crontab

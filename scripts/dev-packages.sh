@@ -1,5 +1,10 @@
 export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
+# working around some weird permission issues related to vagrant shared folders over NFS
+usermod -u 501 vagrant
+usermod -a -G dialout vagrant
+usermod -a -G dialout www-data
+
 # Install some system packages
 apt-get install -y wget curl vim git mercurial bzr tree python python-pip htop nmap
 
@@ -29,6 +34,9 @@ apt-get install -y ruby-sass ruby-compass
 
 gem install compass
 
+chown -R vagrant:www-data /var/www/
+chmod -R ug+rw /var/www/
+
 apt-get install -y libapache2-mod-php7.0 apache2-utils links
 
 a2enmod rewrite
@@ -38,6 +46,7 @@ apt-get install -y php7.0-cgi
 apt-get install -y php7.0-fpm
 a2enmod php7.0
 sed -i 's:/var/www/html:/var/www/public:g' /etc/apache2/sites-enabled/000-default.conf
+sed -i 's:www-data:vagrant:g' /etc/apache2/envvars
 service apache2 restart
 
 # required for Zray installer to work
@@ -146,4 +155,6 @@ EOT4
 apt-get install -y libclone-perl libmldbm-perl libnet-daemon-perl librpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
 apt-get install -y --allow-unauthenticated mariadb-server mariadb-client
 
+chown -R vagrant:www-data /var/www/
+chmod -R ug+rw /var/www/
 
