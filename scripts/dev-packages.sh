@@ -6,7 +6,7 @@ usermod -a -G dialout vagrant
 usermod -a -G dialout www-data
 
 # Install some system packages
-apt-get install -y wget curl vim git mercurial bzr tree python python-pip htop nmap
+apt-get install -y wget curl vim git mercurial bzr tree python python-pip htop nmap samba
 
 # Install ifs
 pip install -U setuptools pip
