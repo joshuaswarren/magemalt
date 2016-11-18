@@ -39,6 +39,9 @@ chmod -R ug+rw /var/www/
 
 apt-get install -y libapache2-mod-php7.0 apache2-utils links
 
+apt-get install -y varnish
+apt-get install -y rabbitmq-server
+
 a2enmod rewrite
 
 a2dismod php5
