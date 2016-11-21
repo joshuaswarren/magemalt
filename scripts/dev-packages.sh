@@ -6,7 +6,7 @@ usermod -a -G dialout vagrant
 usermod -a -G dialout www-data
 
 # Install some system packages
-apt-get install -y wget curl vim git mercurial bzr tree python python-pip htop nmap samba
+apt-get install -y wget curl vim git mercurial bzr tree python python-pip htop nmap samba aptitude
 
 # Install ifs
 pip install -U setuptools pip
@@ -24,8 +24,9 @@ add-apt-repository -y ppa:ondrej/php
 apt-get update
 apt-get install -y --force-yes php7.0 php7.0-mysql php7.0-fpm php7.0-cli php7.0-xsl php7.0-intl php7.0-mcrypt php7.0-curl php7.0-gd php7.0-mbstring php7.0-zip php7.0-soap
 apt-get install -y --force-yes git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev php7.0-xml
-apt-get install -y --force-yes ruby2.2 ruby2.2-dev
-apt-get install -y --force-yes libgd-tools
+apt-get install -y --force-yes ruby2.2 ruby2.2-dev 
+apt-get install -y ri ruby-dev ruby-activesupport
+apt-get install -y --force-yes libgd-tools libmcrypt-dev mcrypt php-pear
 apt-get install -y --force-yes ant
 apt-get install -y --force-yes php-gettext php-intl
 apt-get install -y --force-yes php7-intl
@@ -48,6 +49,9 @@ a2dismod php5
 apt-get install -y php7.0-cgi
 apt-get install -y php7.0-fpm
 a2enmod php7.0
+a2enmod proxy_fcgi setenvif
+a2enconf php7.0-fpm
+
 sed -i 's:/var/www/html:/var/www/public:g' /etc/apache2/sites-enabled/000-default.conf
 sed -i 's:www-data:vagrant:g' /etc/apache2/envvars
 service apache2 restart
@@ -69,7 +73,6 @@ apt-get install -y npm
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
 apt-get install software-properties-common
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-# add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-networks.net/mariadb/repo/10.1/ubuntu xenial main'
 
 apt-get update
 
@@ -81,9 +84,9 @@ apt-get install -y sqlite php7.0-sqlite libsqlite3-dev
 
 apt-get install -y php7.0-redis
 
-apt-get install -y php7.0-memcache php7.0-memcached php7.0-apcu
+apt-get install -y php7.0-memcache php7.0-memcached php7.0-apcu memcached
 
-apt-get install -y vim grep sed awk sort seq watch curl tree wget
+apt-get install -y vim grep sed gawk watch curl tree wget
 
 npm update
 
@@ -99,7 +102,7 @@ npm update
 gem install mailcatcher
 
 composer global update
-composer global require magento/magento2ce
+composer global require magento/community-edition
 composer global require snowdog/frontools
 
 wget -O zray.tar.gz http://www.zend.com/en/download/3973?start=true
@@ -111,8 +114,6 @@ echo "deb http://packages.blackfire.io/debian any main" | sudo tee /etc/apt/sour
 apt-get update
 
 apt-get install -y blackfire-agent blackfire-php
-
-apt-get install -y gawk
 
 cd /usr/local/bin
 # cant use latest magerun, have to use develop
@@ -155,8 +156,25 @@ cat <<EOT4 >> /etc/apache2/sites-enabled/000-default.conf
 </Directory>
 EOT4
 
-apt-get install -y libclone-perl libmldbm-perl libnet-daemon-perl librpc-perl libsql-statement-perl libipc-sharedcache-perl tinyca
-apt-get install -y --allow-unauthenticated mariadb-server mariadb-client
+apt-get install -y libclone-perl libmldbm-perl libnet-daemon-perl librpc-xml-perl libsql-statement-perl libipc-sharedcache-perl tinyca
+# apt-get install -y --allow-unauthenticated mariadb-server mariadb-client
+
+# Percona (instead of MySQL)
+
+wget https://repo.percona.com/apt/percona-release_0.1-4.$(lsb_release -sc)_all.deb
+dpkg -i percona-release_0.1-4.$(lsb_release -sc)_all.deb
+apt-get update
+apt-get install -y percona-server-server-5.7
+
+# ElasticSearch
+
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
+apt-get update
+sudo apt-get -y install elasticsearch
+systemctl daemon-reload
+systemctl enable elasticsearch
+systemctl start elasticsearch
 
 chown -R vagrant:www-data /var/www/
 chmod -R ug+rw /var/www/

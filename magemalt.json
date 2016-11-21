@@ -1,8 +1,8 @@
 {
   "variables": {
     "name": "creatuity/magemalt",
-    "version": "2.0.12",
-    "box_name": "2.0.12-{{timestamp}}"
+    "version": "2.0.14",
+    "box_name": "2.0.14-{{timestamp}}"
   },
   "push": {
     "name": "{{user `name`}}",
