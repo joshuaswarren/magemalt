@@ -17,6 +17,7 @@ wget -q https://github.com/cbednarski/hostess/releases/download/v0.1.0/hostess_l
 chmod +x hostess_linux_amd64
 mv hostess_linux_amd64 /usr/local/bin/hostess
 
+apt-get install -y bindfs
 apt-get install -y redis-server
 apt-get install -y --force-yes python-software-properties software-properties-common
 add-apt-repository -y ppa:brightbox/ruby-ng
