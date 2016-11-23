@@ -18,6 +18,6 @@ umount /mnt
 #Cleanup VirtualBox
 rm $VBOX_ISO
 
-echo "Shutting down, please wait 60 seconds""
+echo "Shutting down, please wait 60 seconds"
 shutdown -r now
 sleep 60
