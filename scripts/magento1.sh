@@ -27,3 +27,5 @@ echo "*/1 * * * * /usr/bin/php /var/www/public/magento1/cron.php > /var/www/publ
 #install new cron file
 crontab mycron
 rm mycron
+
+chmod -R a+rw /opt/magento1

@@ -49,3 +49,5 @@ echo "*/1 * * * * /usr/bin/php -c /etc/php5/apache2/php.ini /var/www/public/mage
 #install new cron file
 crontab mycron
 rm mycron
+
+chmod -R a+rw /opt/magento2

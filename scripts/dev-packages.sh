@@ -17,12 +17,17 @@ wget -q https://github.com/cbednarski/hostess/releases/download/v0.1.0/hostess_l
 chmod +x hostess_linux_amd64
 mv hostess_linux_amd64 /usr/local/bin/hostess
 
+# Install bindfs
 apt-get install -y bindfs
+
+# Install Redis
+
 apt-get install -y redis-server
 apt-get install -y --force-yes python-software-properties software-properties-common
 add-apt-repository -y ppa:brightbox/ruby-ng
 add-apt-repository -y ppa:ondrej/php
 apt-get update
+apt-get install -y --force-yes postgresql-9.5
 apt-get install -y --force-yes php7.0 php7.0-mysql php7.0-fpm php7.0-cli php7.0-xsl php7.0-intl php7.0-mcrypt php7.0-curl php7.0-gd php7.0-mbstring php7.0-zip php7.0-soap
 apt-get install -y --force-yes git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev php7.0-xml
 apt-get install -y --force-yes ruby2.2 ruby2.2-dev 
@@ -180,3 +185,21 @@ systemctl start elasticsearch
 chown -R vagrant:www-data /var/www/
 chmod -R ug+rw /var/www/
 
+# Install mailcatcher
+gem install mailcatcher
+
+cat <<EOTMC >> /etc/systemd/system/mailcatcher.service
+[Unit]
+Description=Ruby MailCatcher
+Documentation=http://mailcatcher.me/
+
+[Service]
+# Ubuntu/Debian convention:
+EnvironmentFile=-/etc/default/mailcatcher
+Type=simple
+ExecStart=/usr/bin/mailcatcher --foreground --http-ip=0.0.0.0
+
+[Install]
+WantedBy=multi-user.target
+EOTMC
+systemctl enable mailcatcher.service
