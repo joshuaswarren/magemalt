@@ -1,5 +1,5 @@
 rm /home/vagrant/magemalt_version.txt
-echo "2.0.16" >> /home/vagrant/magemalt_version.txt
+echo "2.1.0" >> /home/vagrant/magemalt_version.txt
 
 mkdir /home/vagrant/.composer
 cat <<EOT >> /home/vagrant/.composer/composer.json
