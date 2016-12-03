@@ -96,12 +96,13 @@ apt-get install -y vim grep sed gawk watch curl tree wget
 
 npm update
 
-npm install grunt
-npm install bower
-npm install yeoman
-npm install gulp
-npm install browser-sync
-npm install pm2
+npm install -g grunt
+npm install -g bower
+npm install -g yeoman
+npm install -g gulp
+npm install -g browser-sync
+npm install -g pm2
+npm install -g less
 
 npm update
 
