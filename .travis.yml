@@ -1,0 +1,47 @@
+language: universe
+dist: trusty
+group: edge
+sudo: required
+cache:
+  bundler: true
+  directories:
+  - ${HOME}/bin
+env:
+  matrix:
+  - DIST=trusty
+  global:
+  - LANG=en_US.UTF-8
+  - REQUEST_INTERVAL=5
+  - SHELLCHECK_URL="https://s3.amazonaws.com/travis-blue-public/binaries/ubuntu/14.04/x86_64/shellcheck-0.4.4.tar.bz2"
+  - SHFMT_URL="https://github.com/mvdan/sh/releases/download/v0.1.0/shfmt_v0.1.0_linux_amd64"
+  - SKIP_CHEFDK_REMOVAL='1'
+  - SPEC_ARGS='--tag ~dev'
+  - SPEC_RUNNER='bash -lc'
+  - SPEC_SUITES='travis_packer_templates'
+matrix:
+  include:
+  - language: ruby
+    rvm: 2.3.1
+    env: DIST=precise
+    dist: precise
+    group: edge
+install:
+- rvm use 2.3.1 --install --binary --fuzzy
+- bundle install --jobs=3 --retry=2 --path=vendor/bundle
+- if ! shellcheck --version ; then
+    curl -sSL "${SHELLCHECK_URL}" | tar -C "${HOME}/bin" -xjf - ;
+  fi
+- if ! command -v shfmt ; then
+    curl -sSL "${SHFMT_URL}" -o "${HOME}/bin/shfmt" ;
+    chmod +x "${HOME}/bin/shfmt" ;
+  fi
+- ln -sv "${TRAVIS_BUILD_DIR}" "${TRAVIS_BUILD_DIR}/tmp/packer-chef-local"
+script:
+- make
+- bundle exec make test
+- git diff --exit-code
+- git diff --cached --exit-code
+- for f in ~/.*_rspec.json ; do
+    echo "checking $f" ;
+    jq . < $f &>/dev/null ;
+  done

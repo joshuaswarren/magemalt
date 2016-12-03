@@ -49,3 +49,26 @@ EOT4
 
 apt-get install -y debconf-utils
 debconf-set-selections /root/preseed.txt
+
+cat <<EOTA1 >> /home/vagrant/.composer/auth.json
+{
+    "http-basic": {
+        "repo.magento.com": {
+            "username": "9c0013c46255fb5c0cf01c391072db5f",
+            "password": "cc28fe657d093c1695c34708bc004c1a"
+        }
+    }
+}
+EOTA1
+
+cat <<EOTA2 >> /root/.composer/auth.json
+{
+    "http-basic": {
+        "repo.magento.com": {
+            "username": "9c0013c46255fb5c0cf01c391072db5f",
+            "password": "cc28fe657d093c1695c34708bc004c1a"
+        }
+    }
+}
+EOTA2
+

@@ -1,16 +1,14 @@
 cd /usr/local/src/
 
-git clone https://github.com/magento/magento2
-git clone https://github.com/magento/magento2-sample-data
+git clone https://github.com/magento/magento2 magento2-github-develop
+git clone https://github.com/magento/magento2-sample-data magento2-sample-data-github-develop
+
+chown -R vagrant:www-data /usr/local/src/magento2-github-develop
+chown -R vagrant:www-data /usr/local/src/magento2-sample-data-github-develop
+
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition /opt/magento2
 
 chown -R vagrant:www-data /opt/magento2
-chown -R vagrant:www-data /opt/magento2-sample-data
-
-cp -r /usr/local/src/magento2 /opt/magento2
-cp -r /usr/local/src/magento2-sample-data /opt/magento2-sample-data
-
-cd /opt/
-php -f magento2-sample-data/dev/tools/build-sample-data.php -- --ce-source="/opt/magento2"
 
 cd /opt/magento2
 composer install
@@ -21,9 +19,6 @@ chmod a+x bin/magento
 
 bin/magento setup:install --admin-firstname=Admin --admin-lastname=User --admin-email=test@test.com --admin-user=admin --admin-password=password1 --base-url=http://192.168.33.10/magento2/ --backend-frontname=adminpanel --db-host=localhost --db-name=magento2 --db-user=dev --db-password=dev --currency=USD --language=en_US --timezone=America/Chicago --use-rewrites=1
 
-# chmod -R 777 * 
-
-
 bin/magento setup:db-data:upgrade 
 bin/magento setup:upgrade
 bin/magento setup:di:compile
@@ -31,12 +26,6 @@ bin/magento sampledata:deploy
 bin/magento setup:static-content:deploy
 bin/magento deploy:mode:set developer
 bin/magento setup:upgrade
-
-mkdir -p /pub/media/catalog/product/cache/1/
-
-chown -R vagrant:www-data /opt/magento2-sample-data/pub
-chmod -R 777 /opt/magento2-sample-data/pub
-# chmod -R 777 *
 
 # setup Magento 2 crontab
 

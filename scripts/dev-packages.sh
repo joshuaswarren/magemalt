@@ -198,7 +198,7 @@ Documentation=http://mailcatcher.me/
 # Ubuntu/Debian convention:
 EnvironmentFile=-/etc/default/mailcatcher
 Type=simple
-ExecStart=/usr/bin/mailcatcher --foreground --http-ip=0.0.0.0
+ExecStart=/usr/local/bin/mailcatcher --foreground --http-ip=0.0.0.0
 
 [Install]
 WantedBy=multi-user.target
