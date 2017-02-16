@@ -1,5 +1,5 @@
 rm /home/vagrant/magemalt_version.txt
-echo "2.1.1" >> /home/vagrant/magemalt_version.txt
+echo "2.1.2" >> /home/vagrant/magemalt_version.txt
 
 mkdir /home/vagrant/.composer
 cat <<EOT >> /home/vagrant/.composer/composer.json
@@ -72,3 +72,7 @@ cat <<EOTA2 >> /root/.composer/auth.json
 }
 EOTA2
 
+CAT <<EOTA3 >> /etc/apache2/sites-enabled/000-default.conf 
+
+Include /etc/adminer/apache.conf
+EOTA3

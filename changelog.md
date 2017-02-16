@@ -1,3 +1,7 @@
+2.1.2
+
+Add adminer	
+
 2.1.1
 
 Add php-7.0-bcmath

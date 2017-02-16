@@ -94,6 +94,8 @@ apt-get install -y php7.0-memcache php7.0-memcached php7.0-apcu memcached
 
 apt-get install -y vim grep sed gawk watch curl tree wget
 
+apt-get install -y adminer
+
 npm update
 
 npm install -g grunt
@@ -204,3 +206,15 @@ ExecStart=/usr/local/bin/mailcatcher --foreground --http-ip=0.0.0.0
 WantedBy=multi-user.target
 EOTMC
 systemctl enable mailcatcher.service
+
+
+cd /usr/local/src/
+
+git clone https://github.com/magento/marketplace-eqp.git
+git clone https://github.com/magento/code-migration.git
+git clone https://github.com/magento/magento2-samples.git
+git clone https://github.com/magento/data-migration-tool.git
+git clone https://github.com/magento/magento-cloud.git
+git clone https://github.com/magento/magento2-zray.git
+git clone https://github.com/magento/marketplace-tools.git
+git clone https://github.com/magento/mtf.git
