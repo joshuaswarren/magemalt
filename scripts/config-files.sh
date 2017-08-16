@@ -1,3 +1,5 @@
+apt-get install -y apache2
+
 rm /home/vagrant/magemalt_version.txt
 echo "2.1.2" >> /home/vagrant/magemalt_version.txt
 
@@ -72,7 +74,7 @@ cat <<EOTA2 >> /root/.composer/auth.json
 }
 EOTA2
 
-CAT <<EOTA3 >> /etc/apache2/sites-enabled/000-default.conf 
+cat <<EOTA3 >> /etc/apache2/sites-enabled/000-default.conf 
 
 Include /etc/adminer/apache.conf
 EOTA3
