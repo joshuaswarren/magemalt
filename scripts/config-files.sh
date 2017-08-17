@@ -78,3 +78,13 @@ cat <<EOTA3 >> /etc/apache2/sites-enabled/000-default.conf
 
 Include /etc/adminer/apache.conf
 EOTA3
+
+mkdir /etc/mysql
+mkdir /etc/mysql/conf.d
+touch /etc/mysql/conf.d/mysqld.cnf
+cat <<EOTA4 >> /etc/mysql/conf.d/mysqld.cnf
+
+[mysqld]
+max_allowed_packet=128M
+
+EOTA4

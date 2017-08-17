@@ -1,8 +1,8 @@
 {
   "variables": {
     "name": "creatuity/magemalt",
-    "version": "2.1.2",
-    "box_name": "2.1.2-{{timestamp}}"
+    "version": "2.1.5",
+    "box_name": "2.1.5-{{timestamp}}"
   },
   "push": {
     "name": "{{user `name`}}",
@@ -43,7 +43,7 @@
         "<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 40960,
+      "disk_size": 81920,
       "guest_os_type": "Ubuntu_64",
       "headless": true,
       "http_directory": "http",

@@ -52,3 +52,8 @@ crontab mycron
 rm mycron
 
 chmod -R a+rw /opt/magento2
+
+rm -rf /var/www/public/magento2/var/generation
+rm -rf /var/www/public/magento2/var/cache
+rm -rf /opt/magento2/var/generation
+rm -rf /opt/magento2/var/cache
