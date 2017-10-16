@@ -1,7 +1,7 @@
 apt-get install -y apache2
 
 rm /home/vagrant/magemalt_version.txt
-echo "2.1.2" >> /home/vagrant/magemalt_version.txt
+echo "2.1.6" >> /home/vagrant/magemalt_version.txt
 
 mkdir /home/vagrant/.composer
 cat <<EOT >> /home/vagrant/.composer/composer.json
