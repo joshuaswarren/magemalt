@@ -19,4 +19,10 @@ Specifics to building the MageMalt box:
 3. cd magemalt
 4. make
 
+If you will be rebuilding this base box often, I recommend downloading the underlying Ubuntu image into the iso folder. Follow these steps:
 
+1. cd magemalt
+2. cd iso
+3. wget http://releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso
+
+This will download the Ubuntu base box that the image uses and store it locally so that it doesn't have to be redownloaded each time you want to make a change to Magemalt and rebuild.

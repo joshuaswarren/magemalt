@@ -22,7 +22,7 @@ apt-get install -y bindfs
 
 # Install Redis
 
-apt-get install -y redis-server apache2
+apt-get install -y redis-server
 apt-get install -y --force-yes python-software-properties software-properties-common
 add-apt-repository -y ppa:brightbox/ruby-ng
 add-apt-repository -y ppa:ondrej/php
@@ -218,3 +218,9 @@ git clone https://github.com/magento/magento-cloud.git
 git clone https://github.com/magento/magento2-zray.git
 git clone https://github.com/magento/marketplace-tools.git
 git clone https://github.com/magento/mtf.git
+git clone https://github.com/magento-engcom/msi.git
+
+cat <<EOTA3 >> /etc/apache2/sites-available/000-default.conf
+
+Include /etc/adminer/apache.conf
+EOTA3
