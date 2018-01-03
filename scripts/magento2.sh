@@ -57,3 +57,29 @@ rm -rf /var/www/public/magento2/var/generation
 rm -rf /var/www/public/magento2/var/cache
 rm -rf /opt/magento2/var/generation
 rm -rf /opt/magento2/var/cache
+
+mkdir -p /etc/php/7.0/cgi/
+mkdir -p /etc/php/7.0/cli/
+mkdir -p /etc/php/7.0/apache2/
+mkdir -p /etc/php/7.0/fpm/
+
+cat <<EOTA5 >> /etc/php/7.0/cgi/php.ini
+sendmail_path = /usr/bin/env /usr/local/bin/catchmail -f magescotch@mailcatcher.dev
+
+EOTA5
+
+cat <<EOTA6 >> /etc/php/7.0/cli/php.ini
+sendmail_path = /usr/bin/env /usr/local/bin/catchmail -f magescotch@mailcatcher.dev
+
+EOTA6
+
+cat <<EOTA7 >> /etc/php/7.0/apache2/php.ini
+sendmail_path = /usr/bin/env /usr/local/bin/catchmail -f magescotch@mailcatcher.dev
+
+EOTA7
+
+cat <<EOTA8 >> /etc/php/7.0/fpm/php.ini
+sendmail_path = /usr/bin/env /usr/local/bin/catchmail -f magescotch@mailcatcher.dev
+
+EOTA8
+

@@ -88,3 +88,5 @@ cat <<EOTA4 >> /etc/mysql/conf.d/mysqld.cnf
 max_allowed_packet=128M
 
 EOTA4
+
+	

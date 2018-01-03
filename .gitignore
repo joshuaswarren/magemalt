@@ -10,3 +10,5 @@ test/magento1
 test/magento2
 .idea
 iso/*.iso
+iso/
+*.icloud
